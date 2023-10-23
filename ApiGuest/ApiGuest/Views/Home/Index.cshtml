@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GiocatoreBasketAmatoriale>
+
+@{
+    ViewData["Title"] = "Elenco Prodotti";
+}
+
+
+<h2>Elenco Prodotti</h2>
+
+<a asp-action="GetGiocatore" class="btn btn-sm btn-primary">Vedi Singolo Giocatore</a>
+<a asp-action="AddGiocatore" class="btn btn-sm btn-secondary">Aggiungi Giocatore</a>
+<table class="table table-sm table-striped  table-bordered m-2">
+    <thead>
+        <tr>
+            <th>Gioc.ID</th>
+            <th>Nome</th>
+            <th>Eta</th>
+            <th>Altezza</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.GiocatoreId</td>
+                <td>@item.Nome</td>
+                <td>@item.Eta</td>
+                <td>@item.Altezza</td>
+
+                <td>
+                    <a asp-action="UpdateGiocatore" asp-route-id="@item.GiocatoreId">Aggiorna</a>
+                </td>
+                <td>
+                    <form asp-action="DeleteGiocatore" mehod="post">
+                        <input type="hidden" value="@item.GiocatoreId" name="id">
+                        <input type="image" src="/icon/close.png" />
+
+                    </form>
+                </td>
+
+            </tr>
+
+        }
+
+    </tbody>
+
+</table>

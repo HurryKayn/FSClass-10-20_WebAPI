@@ -1,0 +1,43 @@
+﻿@model GiocatoreBasketAmatoriale
+@{
+    ViewData["title"] = "Dati Giocatore";
+}
+<h2>
+    Richiesta Giocatore tramite ID <a asp-action="Index" class="btn btn-sm  btn-secondary">Ritorna</a><h2>
+
+        <br />
+
+        <form method="post">
+            <div class="form-group">
+                <label for="id">ID:</label>
+                <input class="form-Control" name="id" />
+            </div>
+            <div class="text-center panel-body">
+                <button type="submit" class="btn btn-sm btn-primary">Visualizza Giocatore</button>
+            </div>
+
+        </form>
+
+        @if (Model != null)
+        {
+            <h2>Dati Giocatore</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Nome</td>
+                        <td>Eta</td>
+                        <td>Altezza</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.GiocatoreId</td>
+                        <td>@Model.Nome</td>
+                        <td>@Model.Eta</td>
+                        <td>@Model.Altezza</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        }
